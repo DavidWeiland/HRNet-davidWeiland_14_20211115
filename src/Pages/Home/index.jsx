@@ -1,5 +1,6 @@
 import '../../Styles/App.css';
-import { useState, useRef } from 'react';
+import { useState } from 'react'
+import { useRef } from 'react';
 import { Link } from 'react-router-dom'
 import Datetimepicker from '../../Components/DateTimePicker';
 import { states } from '../../Data/States'
@@ -19,6 +20,7 @@ export default function Home() {
   const [state, setState]= useState('AL')
   const [zipCode, setZipcode ]= useState('')
   const [department, setDepartment] = useState('Sales')
+  const [modal, setModal] = useState(false)
 
   const modalRef = useRef()
 
@@ -45,7 +47,11 @@ export default function Home() {
   }
 
   const saveEmployee = () => {
+    setModal(!modal)
+/*
     const employees = JSON.parse(localStorage.getItem('employees')) || []
+*/
+
     const employee = {
         firstName: firstName,
         lastName: lastName,
@@ -57,11 +63,16 @@ export default function Home() {
         zipCode: zipCode,
         department: department
     }
+    console.log(employee)
+
+/* 
     employees.push(employee);
     localStorage.setItem('employees', JSON.stringify(employees))
-
+*/
+    
     $(modalRef.current).modal()
 
+/*
     setFirstname('')
     setLastname('')
     setBirthdate('')
@@ -71,7 +82,7 @@ export default function Home() {
     setState('AL')
     setZipcode('')
     setDepartment('Sales')
-
+ */
   }
 
   return (
