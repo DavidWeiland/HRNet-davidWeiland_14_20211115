@@ -1,3 +1,12 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .DW-Modale-Wrapper {
   background-color: rgba(1, 1, 1, 0.5);
   position: fixed;
@@ -9,6 +18,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
 .DW-Modale-Wrapper--Text {
@@ -28,6 +38,7 @@
   color:#333333;
   font-weight: bold;
   font: size 1.1rem;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
 .DW-Modale-Wrapper--Close{

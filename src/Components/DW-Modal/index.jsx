@@ -1,8 +1,7 @@
-import { useHistory } from 'react-router-dom'
 import './css/DW-Modal.css'
 
 
-export default function Modal({ children, config}) {
+export default function Modal({ state, config, close, children}) {
 
   const { backgroundColor, borderRadius, width, height, justifyContent, alignItems, fontWeight, color, fontSize } = config
   const DWMWTstyle = {
@@ -14,20 +13,14 @@ export default function Modal({ children, config}) {
     alignItems: alignItems,
     fontWeight: fontWeight,
     color: color,
-    fontSize: fontSize
-  }
-  
-  const history=useHistory()
-  const handleClick = (e) => {
-    history.push('/currentEmployees')
-    /* prévoir : store.dispach(modale:false) à la place de useHistory */
+    fontSize: fontSize,
   }
 
   return (
-    <div className='DW-Modale-Wrapper'>
+    <div className='DW-Modale-Wrapper' style={{display: state ? "flex" : "none"}}>
       <div className='DW-Modale-Wrapper--Text' style={DWMWTstyle}>
         {children}
-        <div className='DW-Modale-Wrapper--Close' onClick={handleClick}>
+        <div className='DW-Modale-Wrapper--Close' onClick={close}>
         </div>
       </div>
     </div>

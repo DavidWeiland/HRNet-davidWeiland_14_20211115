@@ -64,6 +64,7 @@ export default function Home() {
 /* 
     employees.push(employee);
     localStorage.setItem('employees', JSON.stringify(employees))
+*/
 
     setFirstname('')
     setLastname('')
@@ -74,7 +75,10 @@ export default function Home() {
     setState('AL')
     setZipcode('')
     setDepartment('Sales')
-*/
+  }
+
+  const closeModal = () => {
+    setModal(!modal)
   }
 
   return (
@@ -139,13 +143,13 @@ export default function Home() {
       </div>
       
       {/* configure modal : Modal accepts config={object} to change style (ex : {backgroundColor : "#FFF", color:"#333333"}). It's possible to change : backgroundColor, borderRadius, width, height, justifyContent, alignItems, color, fontWeight, fontSize. */}
-      {(modal) ? (
-        <Modal config={{}}>
+      {/* {(modal) ? ( */}
+        <Modal state={modal} config={{}} close={closeModal}>
           <p>Employee Created!</p>
         </Modal>
-      ) : (
+      {/* ) : (
         null
-      )}
+      )} */}
       
     </div>
   );
