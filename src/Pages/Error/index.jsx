@@ -1,22 +1,37 @@
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 import '../../Styles/App.css';
 
+
+const Wrapper = styled.div`
+margin-top:100px;
+text-align:center;
+font-size : 20px;
+fontWeight : bold;
+color : #333333;
+`
+
+const Title = styled.h1`
+margin-top:200px;
+margin-bottom:0;
+font-size : 200px;
+`
+
+const Subtitle = styled.h2`
+margin-top:0;
+font-size : 30px;
+`
 
 export default function Error() {
   return (
     <div>
-      <div className="title">
-        <h1>ERROR - HRnet</h1>
-      </div>
-      <div className="title">
-        <h2>404</h2>
-      </div>
-      <div className="title">
-        <h3>La page demandée n'existe pas</h3>
-      </div>
-      <div className="container">
+      <Wrapper>
         <Link to="/">Returns to Home Page</Link>
-      </div>
+      </Wrapper>
+      <Wrapper>
+        <Title>404</Title>
+        <Subtitle>Oups, la page que vous avez demandé n'existe pas !</Subtitle>
+      </Wrapper>
     </div>
   )
 }
