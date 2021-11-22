@@ -1,14 +1,11 @@
 import '../../Styles/App.css';
 import { useState } from 'react'
-import { useRef } from 'react';
 import { Link } from 'react-router-dom'
 import Datetimepicker from '../../Components/DateTimePicker';
 import { states } from '../../Data/States'
 import SelectMenu from '../../Components/SelectMenu';
 import SelectOptions from '../../Components/SelectOptions';
-import $ from 'jquery';
-import 'jquery-modal'
-import 'jquery-modal/jquery.modal.css'
+import Modal from '../../Components/DW-Modal';
 
 export default function Home() {
   const [firstName, setFirstname]= useState('')
@@ -21,8 +18,6 @@ export default function Home() {
   const [zipCode, setZipcode ]= useState('')
   const [department, setDepartment] = useState('Sales')
   const [modal, setModal] = useState(false)
-
-  const modalRef = useRef()
 
   const handleChange = (e) => {
     const value = e.target.value
@@ -48,10 +43,11 @@ export default function Home() {
 
   const saveEmployee = () => {
     setModal(!modal)
+
 /*
     const employees = JSON.parse(localStorage.getItem('employees')) || []
 */
-
+    
     const employee = {
         firstName: firstName,
         lastName: lastName,
@@ -68,11 +64,7 @@ export default function Home() {
 /* 
     employees.push(employee);
     localStorage.setItem('employees', JSON.stringify(employees))
-*/
-    
-    $(modalRef.current).modal()
 
-/*
     setFirstname('')
     setLastname('')
     setBirthdate('')
@@ -82,7 +74,7 @@ export default function Home() {
     setState('AL')
     setZipcode('')
     setDepartment('Sales')
- */
+*/
   }
 
   return (
@@ -145,12 +137,16 @@ export default function Home() {
           Save
         </button>
       </div>
-      <div
-        ref={modalRef}
-        id="confirmation"
-        className="modal">
-        Employee Created!
-      </div>
+      
+      {/* configure modal : Modal accepts config={object} to change style (ex : {backgroundColor : "#FFF", color:"#333333"}). It's possible to change : backgroundColor, borderRadius, width, height, justifyContent, alignItems, color, fontWeight, fontSize. */}
+      {(modal) ? (
+        <Modal config={{}}>
+          <p>Employee Created!</p>
+        </Modal>
+      ) : (
+        null
+      )}
+      
     </div>
   );
 }
