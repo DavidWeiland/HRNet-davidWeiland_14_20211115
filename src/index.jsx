@@ -1,19 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-//import './index.css';
-import Home from './Pages/Home/Home';
-import CurrentEmployees from './Pages/CurrentEmployees/CurrentEmployees'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Home from './Pages/Home';
+import CurrentEmployees from './Pages/CurrentEmployees'
+import Error from './Pages/Error'
 //import reportWebVitals from './reportWebVitals';
 
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/currentEmployees' element={<CurrentEmployees />} />
-      </Routes>
+      <Switch>
+        <Route exact path='/'>
+          <Home />
+        </Route>
+        <Route path='/currentEmployees'> 
+          <CurrentEmployees /> 
+        </Route>
+        <Route>
+          <Error />
+        </Route>
+      </Switch>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
