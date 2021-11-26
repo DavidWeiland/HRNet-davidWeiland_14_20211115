@@ -1,16 +1,15 @@
 import '../../Styles/App.css';
 import { useState } from 'react'
-import { useRef } from 'react';
 import { Link } from 'react-router-dom'
 import Datetimepicker from '../../Components/DateTimePicker';
 import { states } from '../../Data/States'
 import SelectMenu from '../../Components/SelectMenu';
 import SelectOptions from '../../Components/SelectOptions';
-import $ from 'jquery';
-import 'jquery-modal'
-import 'jquery-modal/jquery.modal.css'
+import Modal from 'dw-react-modal/dist/dw-react-modal';
 
 export default function Home() {
+  const employees = JSON.parse(localStorage.getItem('employees')) || []
+
   const [firstName, setFirstname]= useState('')
   const [lastName, setLastname]= useState('')
   const [dateOfBirth, setBirthdate]= useState('')
@@ -21,8 +20,6 @@ export default function Home() {
   const [zipCode, setZipcode ]= useState('')
   const [department, setDepartment] = useState('Sales')
   const [modal, setModal] = useState(false)
-
-  const modalRef = useRef()
 
   const handleChange = (e) => {
     const value = e.target.value
@@ -48,10 +45,7 @@ export default function Home() {
 
   const saveEmployee = () => {
     setModal(!modal)
-/*
-    const employees = JSON.parse(localStorage.getItem('employees')) || []
-*/
-
+    
     const employee = {
         firstName: firstName,
         lastName: lastName,
@@ -63,16 +57,10 @@ export default function Home() {
         zipCode: zipCode,
         department: department
     }
-    console.log(employee)
 
-/* 
     employees.push(employee);
     localStorage.setItem('employees', JSON.stringify(employees))
-*/
-    
-    $(modalRef.current).modal()
 
-/*
     setFirstname('')
     setLastname('')
     setBirthdate('')
@@ -82,7 +70,10 @@ export default function Home() {
     setState('AL')
     setZipcode('')
     setDepartment('Sales')
- */
+  }
+
+  const closeModal = () => {
+    setModal(!modal)
   }
 
   return (
@@ -145,12 +136,9 @@ export default function Home() {
           Save
         </button>
       </div>
-      <div
-        ref={modalRef}
-        id="confirmation"
-        className="modal">
-        Employee Created!
-      </div>
+      <Modal state={modal} config={{}} close={closeModal}>
+        <p>Employee Created!</p>
+      </Modal>
     </div>
   );
 }
