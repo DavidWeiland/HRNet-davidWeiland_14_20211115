@@ -5,7 +5,7 @@ import Datetimepicker from '../../Components/DateTimePicker';
 import { states } from '../../Data/States'
 import SelectMenu from '../../Components/SelectMenu';
 import SelectOptions from '../../Components/SelectOptions';
-import Modal from '../../Components/DW-Modal';
+import Modal from 'dw-react-modal/dist/dw-react-modal';
 
 export default function Home() {
   const employees = JSON.parse(localStorage.getItem('employees')) || []
@@ -136,12 +136,9 @@ export default function Home() {
           Save
         </button>
       </div>
-      
-      {/* configure modal : Modal accepts config={object} to change style (ex : {backgroundColor : "#FFF", color:"#333333"}). It's possible to change : backgroundColor, borderRadius, width, height, justifyContent, alignItems, color, fontWeight, fontSize. */}
-        <Modal state={modal} config={{}} close={closeModal}>
-          <p>Employee Created!</p>
-        </Modal>
-      
+      <Modal state={modal} config={{}} close={closeModal}>
+        <p>Employee Created!</p>
+      </Modal>
     </div>
   );
 }
