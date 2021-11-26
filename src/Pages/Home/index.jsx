@@ -8,6 +8,8 @@ import SelectOptions from '../../Components/SelectOptions';
 import Modal from '../../Components/DW-Modal';
 
 export default function Home() {
+  const employees = JSON.parse(localStorage.getItem('employees')) || []
+
   const [firstName, setFirstname]= useState('')
   const [lastName, setLastname]= useState('')
   const [dateOfBirth, setBirthdate]= useState('')
@@ -43,10 +45,6 @@ export default function Home() {
 
   const saveEmployee = () => {
     setModal(!modal)
-
-/*
-    const employees = JSON.parse(localStorage.getItem('employees')) || []
-*/
     
     const employee = {
         firstName: firstName,
@@ -59,12 +57,9 @@ export default function Home() {
         zipCode: zipCode,
         department: department
     }
-    console.log(employee)
 
-/* 
     employees.push(employee);
     localStorage.setItem('employees', JSON.stringify(employees))
-*/
 
     setFirstname('')
     setLastname('')
@@ -143,13 +138,9 @@ export default function Home() {
       </div>
       
       {/* configure modal : Modal accepts config={object} to change style (ex : {backgroundColor : "#FFF", color:"#333333"}). It's possible to change : backgroundColor, borderRadius, width, height, justifyContent, alignItems, color, fontWeight, fontSize. */}
-      {/* {(modal) ? ( */}
         <Modal state={modal} config={{}} close={closeModal}>
           <p>Employee Created!</p>
         </Modal>
-      {/* ) : (
-        null
-      )} */}
       
     </div>
   );
