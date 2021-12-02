@@ -1,6 +1,9 @@
+
+// Generic 404 page
+
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import '../../Styles/App.css';
+import '../../Utils/Styles/App.css';
 
 
 const Wrapper = styled.div`
@@ -21,7 +24,6 @@ const Subtitle = styled.h2`
 margin-top:0;
 font-size : 30px;
 `
-
 export default function Error() {
   return (
     <div>
