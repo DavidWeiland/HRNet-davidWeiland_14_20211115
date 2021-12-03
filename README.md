@@ -1,30 +1,70 @@
-# Getting Started with Create React App
+![shields](https://img.shields.io/badge/version-v0.1.0-blue)
+![shields](https://img.shields.io/badge/make_with-React_in_create--react--app-red)
+![shields](https://img.shields.io/badge/make_with-Redux-red)
+![shields](https://img.shields.io/badge/make_with-styled--components-red)
+![shields](https://img.shields.io/badge/use-jQuery-yellow)
+![shields](https://img.shields.io/badge/use-datatables-yellow)
+![shields](https://img.shields.io/badge/use-jquery--datetimepicker-yellow)
+![shields](https://img.shields.io/badge/use-jquery--ui-yellow)
+![shields](https://img.shields.io/badge/use-dw--react--modal-yellow)
+![shields](https://img.shields.io/badge/author-David_Weiland-green)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# HRNET
+## Converting html/jquery to react app
+
+As part of the OpenClassroom training, in addition to the creation of a React app, this project aims to work on the integration of other libraries such as jquery.
+
+Jquery is not compatible with react, so a react component must be implemented to replace the Jquery component. A modal component has been implemented.
+The github repository is available [here](https://github.com/DavidWeiland/DW-Modal).
+To see the module, go to the npm page [here](https://www.npmjs.com/package/dw-react-modal). When installing project locally, the ```yarn``` command downloads and installs this module.
+
+## Technologies
+
+- JavaScript (react, react-router, redux, react-redux, @reduxjs/toolkit)
+- HTML
+- CSS in React (styled-components)
+- CSS
+- JQuery (datatables, jquery-datetimepicker, jquery-ui )
+
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `yarn start`
+### Command `yarn start`
 
-Runs the app in the development mode.\
+##### Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
+##### The page will reload if you make edits.
 You will also see any lint errors in the console.
 
-### `yarn test`
+##### Folders Structure
+The src folder contains the development elements of the application :
+
+- /Components : components of the application
+  - DateTimePicker, 
+  - SelectMenu, 
+  - SelectOptions, 
+  - Table
+
+- /Data : collection of American states and their abbreviation
+- /Features : reducers
+- /Pages : Home, CurrentEmployees, Error
+- /Utils : /styles (style.css), selectors (link to store), store
+- index.jsx : ReactDom with Router and Provider
+
+### Command `yarn test`
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `yarn build`
 
-Builds the app for production to the `build` folder.\
+##### Builds the app for production to the `build` folder.
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
+##### The build is minified and the filenames include the hashes.
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
@@ -39,32 +79,3 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
