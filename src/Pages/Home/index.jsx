@@ -9,8 +9,7 @@ import SelectMenu from '../../Components/SelectMenu';
 import SelectOptions from '../../Components/SelectOptions';
 
 // personal npm module:
-import Modal from 'dw-react-modal/dist/dw-react-modal';
-
+import Modal from 'dw-modal'
 
 export default function Home() {
   const store = useStore()
