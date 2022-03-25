@@ -1,5 +1,5 @@
 import '../../Utils/Styles/App.css';
-import { useState } from 'react'
+import React, { useState, Suspense } from 'react'
 import { Link } from 'react-router-dom'
 import { useStore } from 'react-redux'
 import { addEmployee } from '../../Features/employees';
@@ -7,9 +7,11 @@ import { states } from '../../Data/States'
 import Datetimepicker from '../../Components/DateTimePicker';
 import SelectMenu from '../../Components/SelectMenu';
 import SelectOptions from '../../Components/SelectOptions';
+import InputComponent from '../../Components/InputComponent';
 
 // personal npm module:
-import Modal from 'dw-modal'
+//import Modal from 'dw-modal'
+const Modal = React.lazy(() => import('dw-modal'))
 
 export default function Home() {
   const store = useStore()
@@ -36,7 +38,6 @@ export default function Home() {
 
     // Prepares data to be added to the store
     const employee = { firstName, lastName, dateOfBirth, startDate, street, city, state, zipCode, department }
-    
     addEmployee(store, employee)
 
     // This following part is only necessary in the case of a localStorage
@@ -74,20 +75,21 @@ export default function Home() {
         <Link to="/currentEmployees">View Current Employees</Link>
         <h2>Create Employee</h2>
         <form action="#" id="create-employee">
-          <label htmlFor="first-name">First Name</label>
-          <input
+          <InputComponent
             type="text"
             id="first-name"
+            label="First Name"
             value={firstName}
             onChange={(e) => setFirstname(e.target.value)}
           />
-          <label htmlFor="last-name">Last Name</label>
-          <input
+          <InputComponent
             type="text"
             id="last-name"
+            label="Last Name"
             value={lastName}
             onChange={(e) => setLastname(e.target.value)}
           />
+
           <label htmlFor="date-of-birth">Date of Birth</label>
           <Datetimepicker
             id="date-of-birth"
@@ -100,24 +102,25 @@ export default function Home() {
             value={startDate}
             onChange={setStartdate}
           />
+
           <fieldset className="address">
             <legend>Address</legend>
-            <label htmlFor="street">Street</label>
-            <input
-              id="street"
+            <InputComponent
               type="text"
+              id="street"
+              label="street"
               value={street}
               onChange={(e) => setStreet(e.target.value)}
             />
-            <label htmlFor="city">City</label>
-            <input
-              id="city"
+            <InputComponent
               type="text"
+              id="city"
+              label="City"
               value={city}
               onChange={(e) => setCity(e.target.value)}
             />
-            <label htmlFor="state">State</label>
 
+            <label htmlFor="state">State</label>
             <SelectMenu name="state" id="state" onChange={setState}>
               {states.map(({ index, name, abbreviation }) => (
                 <SelectOptions
@@ -128,16 +131,16 @@ export default function Home() {
               ))}
             </SelectMenu>
 
-            <label htmlFor="zip-code">Zip Code</label>
-            <input
-              id="zip-code"
+            <InputComponent
               type="number"
+              id="zip-code"
+              label="Zip Code"
               value={zipCode}
               onChange={(e) => setZipcode(e.target.value)}
             />
           </fieldset>
-          <label htmlFor="department">Department</label>
 
+          <label htmlFor="department">Department</label>
           <SelectMenu
             name="department"
             id="department"
@@ -154,10 +157,11 @@ export default function Home() {
 
         <button onClick={saveEmployee}>Save</button>
       </div>
-
-      <Modal state={modal} config={{}} close={closeModal}>
-        <p>Employee Created!</p>
-      </Modal>
+      <Suspense fallback={<div></div>}>
+          <Modal state={modal} config={{}} close={closeModal}>
+          <p>Employee Created!</p>
+        </Modal>
+      </Suspense>
     </div>
   )
 }
