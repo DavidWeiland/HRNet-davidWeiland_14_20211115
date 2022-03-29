@@ -2,7 +2,8 @@ import '../../Utils/Styles/App.css'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { selectEmployees } from '../../Utils/selectors'
-import Table from '../../Components/Table'
+
+import { NewTable } from '../../Components/NewTable'
 
 function CurrentEmployees() {
   // Link to the store
@@ -12,12 +13,10 @@ function CurrentEmployees() {
   return (
     <div id="employee-div" className="container">
       <h1>Current Employees</h1>
-      {employeesList ? (
-        <Table dataSource={employeesList} />
-      ) : (
-        null
-      )}
-        <Link to="/">Home</Link>
+
+      <NewTable dataSource={employeesList ?? {}} />
+      
+      <Link to="/">Home</Link>
     </div>
   )
 }
