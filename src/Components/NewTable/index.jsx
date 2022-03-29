@@ -1,7 +1,7 @@
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import { Row } from './rowComponent'
 import { RowFL } from './rowComponentFL'
-import SearchComponent from '../../Components/SearchComponent'
+import SearchComponent from '../SearchComponent'
 
 export const NewTable = ({ dataSource }) => {
 
@@ -10,13 +10,9 @@ export const NewTable = ({ dataSource }) => {
   const [ nbPage, setNbPage ] = useState(1)
   const [ indexMin, setIndexMin ] = useState(1)
   const [ nbEntries, setNbEntries ] = useState(10)
-  const [indexMax, setIndexMax] = useState(EmployeesList.length < nbEntries ? EmployeesList.length : nbEntries)
-  
-  useEffect(() => {
-    setIndexMax(EmployeesList.length < nbEntries
-        ? EmployeesList.length
-        : nbEntries)
-  }, [EmployeesList.length, nbEntries])
+  const [ indexMax, setIndexMax ] = useState(EmployeesList.length < nbEntries ? EmployeesList.length : nbEntries)
+  const [ searchText, setSearchText ] = useState('')
+    
   
     const previousFunction = () => {
     if (nbPage > 1) {
@@ -50,12 +46,13 @@ export const NewTable = ({ dataSource }) => {
           </select>
           <span> entries</span>
         </div>
+        
         <SearchComponent
           type="text"
           id="search"
           label="Search : "
-          data={EmployeesList}
-          onChange={(e) => setEmployeesList(e)}
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
         />
       </div>
       <RowFL
@@ -74,8 +71,7 @@ export const NewTable = ({ dataSource }) => {
 
       {EmployeesList?.map(
         (
-          {
-            index,
+          { index,
             firstName,
             lastName,
             startDate,
@@ -89,19 +85,30 @@ export const NewTable = ({ dataSource }) => {
           employee
         ) =>
           employee >= indexMin - 1 && employee <= indexMax - 1 ? (
-            <Row
-              key={`${index}-${firstName}${lastName}`}
-              employee={employee}
-              firstName={firstName}
-              lastName={lastName}
-              startDate={startDate}
-              department={department}
-              dateOfBirth={dateOfBirth}
-              street={street}
-              city={city}
-              state={state}
-              zipCode={zipCode}
-            />
+            firstName.toLowerCase().includes(searchText.toLowerCase()) ||
+            lastName.toLowerCase().includes(searchText.toLowerCase()) ||
+            startDate.includes(searchText) ||
+            department.toLowerCase().includes(searchText.toLowerCase()) ||
+            dateOfBirth.includes(searchText) ||
+            street.toLowerCase().includes(searchText.toLowerCase()) ||
+            city.toLowerCase().includes(searchText.toLowerCase()) ||
+            state.toLowerCase().includes(searchText.toLowerCase()) ||
+            zipCode.includes(searchText) ? (
+              <Row
+                key={`${index}-${firstName}${lastName}`}
+                employee={employee}
+                firstName={firstName}
+                lastName={lastName}
+                startDate={startDate}
+                department={department}
+                dateOfBirth={dateOfBirth}
+                street={street}
+                city={city}
+                state={state}
+                zipCode={zipCode}
+                searchText={searchText}
+              />
+             ) : null
           ) : null
       )}
       <div

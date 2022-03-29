@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Row = ({ employee, firstName, lastName, startDate, department, dateOfBirth, street, city, state, zipCode }) => {
   
   const bgColor = employee % 2 === 1 ? 'transparent' : '#f6f6f6'
-  
+
   const StyledContainer = styled.div`
     border-bottom: 1px #c6c6c6 solid;
     display: flex;
@@ -13,7 +13,7 @@ export const Row = ({ employee, firstName, lastName, startDate, department, date
     height: 35px;
     background-color: ${bgColor};
   `
-
+  
   return (
     <StyledContainer>
       <StyledCell style={{ flex: 2 }}>{firstName}</StyledCell>
