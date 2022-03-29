@@ -1,7 +1,7 @@
 import { selectEmployees } from '../Utils/selectors'
 import {createSlice} from '@reduxjs/toolkit'
 
-//data initialized with LocalStorage element
+//data initialized with LocalStorage - waiting for backend
 const initialState = {
   status: 'void',
   data: JSON.parse(localStorage.getItem('employees')) || [],
