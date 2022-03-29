@@ -1,32 +1,22 @@
-import React, { useRef, useEffect } from 'react'
+import { states, department } from '../../Data'
+import SelectOptions from '../SelectOptions'
 
-import $ from 'jquery'
-import 'jquery-ui/ui/widgets/selectmenu'
-import 'jquery-ui/themes/base/all.css'
+export default function SelectMenu ({id, label, onChange}) {
 
-
-export default function SelectMenu({ children, onChange }) {
-  //refers to input (like id)
-  const selectRef = useRef()
-  //refers to selected element
-  const selectedRef = useRef()
-
-  //using a useEffect to generate render of component
-  useEffect(() => {
-    if (selectRef.current) {
-      const selection = $(selectRef.current).selectmenu({
-        change: (event, ui) => {
-          onChange(ui.item.value)
-        },
-      })
-      selectedRef.current = selection
-      return () => selection.selectmenu('destroy')
-    }
-  }, [selectRef, onChange])
-
+  const options = id === 'state' ? states : department
+  
   return (
     <div>
-      <select ref={selectRef}>{children}</select>
+      <label htmlFor={id}>{label}</label>
+      <select name={id} id={id} onChange={onChange}>
+        {options.map(({ index, name, abbreviation }) => (
+          <SelectOptions
+            key={`${name}-${index}`}
+            value={abbreviation ?? name}
+            text={name}
+          />
+        ))}
+      </select>
     </div>
   )
 }
