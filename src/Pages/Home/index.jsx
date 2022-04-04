@@ -1,11 +1,16 @@
-import '../../Utils/Styles/App.css';
 import { useState, Suspense, lazy } from 'react'
 import { Link } from 'react-router-dom'
 import { useStore } from 'react-redux'
-import { addEmployee } from '../../Features/employees';
-import SelectMenu from '../../Components/SelectMenu';
-import InputComponent from '../../Components/InputComponent';
-import { formatDate } from '../../Utils/FormatDateFunction';
+import { addEmployee } from '../../Features/employees'
+import SelectMenu from '../../Components/SelectMenu'
+import InputComponent from '../../Components/InputComponent'
+
+import { formatDate } from '../../Utils/FormatDateFunction'
+
+import '../../Utils/Styles/App.css'
+import styled from 'styled-components'
+import colors from '../../Utils/Styles/colors'
+
 
 // personal npm module:
 const Modal = lazy(() => import('dw-modal'))
@@ -44,7 +49,7 @@ export default function Home() {
       zipCode,
       department,
     }
-    
+
     console.log(employee.dateOfBirth)
     addEmployee(store, employee)
 
@@ -52,8 +57,8 @@ export default function Home() {
     /* const employees = JSON.parse(localStorage.getItem('employees')) || []
     employees.push(employee)
     localStorage.setItem('employees', JSON.stringify(employees)) */
- 
-    // Opens the modal
+
+    // Open the modal
     setModal(!modal)
 
     // Empties inputs
@@ -68,20 +73,23 @@ export default function Home() {
     setDepartment('Sales')
   }
 
-  // Imposed by dw-react-modal to close modal
+  // Imposed by dw-modal to close modal
   const closeModal = () => {
     setModal(!modal)
   }
-  
+
   return (
     <div>
-      <div className="title">
+      <div className="title_container">
         <h1>HRnet</h1>
       </div>
 
-      <div className="container">
+      <div className="subtitle_container">
         <Link to="/currentEmployees">View Current Employees</Link>
         <h2>Create Employee</h2>
+      </div>
+
+      <div className="container">
         <form action="#" id="create-employee">
           <InputComponent
             type="text"
@@ -113,7 +121,7 @@ export default function Home() {
             onChange={(e) => setStartdate(e.target.value)}
           />
 
-          <fieldset className="address">
+          <fieldset>
             <legend>Address</legend>
             <InputComponent
               type="text"
@@ -145,7 +153,6 @@ export default function Home() {
               onChange={(e) => setZipcode(e.target.value)}
             />
           </fieldset>
-
           <SelectMenu
             name="department"
             id="department"
@@ -154,7 +161,7 @@ export default function Home() {
           />
         </form>
 
-        <button onClick={saveEmployee}>Save</button>
+        <StyledButton onClick={saveEmployee}>Create</StyledButton>
       </div>
 
       <Suspense fallback={<div></div>}>
@@ -165,3 +172,19 @@ export default function Home() {
     </div>
   )
 }
+
+const StyledButton = styled.button`
+  margin: 15px;
+  padding: 5px;
+  width: 25%;
+  background-color: ${colors.BgButton};
+  color: ${colors.fontLigth};
+  border-radius: 5px;
+  border: 0;
+  box-shadow: 5px 5px 15px grey, inset -3px -3px 15px ${colors.ShadowDark},
+    inset 3px 3px 15px ${colors.ShadowLight};
+  &:active {
+    box-shadow: 2px 2px 15px grey, inset -3px -3px 15px ${colors.ShadowDark},
+      inset 3px 3px 15px ${colors.ShadowLight};
+  }
+`

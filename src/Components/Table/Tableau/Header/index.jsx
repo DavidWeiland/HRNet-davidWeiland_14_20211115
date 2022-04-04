@@ -1,6 +1,7 @@
 import styled from 'styled-components'
+import colors from '../../../../Utils/Styles/colors'
 
-export const RowFL = ({ firstName, lastName, startDate, department, dateOfBirth, street, city, state, zipCode, data, onClick }) => {
+export const Header = ({ firstName, lastName, startDate, department, dateOfBirth, street, city, state, zipCode, data, onClick }) => {
   
   const EmployeesList = Array.from(data)
 
@@ -208,31 +209,32 @@ export const RowFL = ({ firstName, lastName, startDate, department, dateOfBirth,
 }
 
 const StyledContainer = styled.div`
-  border-bottom: 1px black solid;
+  border-bottom: 1px ${colors.fontDark} solid;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: bold;
   height: 35px;
-  background-color: transparent;
+  background-color: ${colors.defaultBg};
+  font-size:15px
 `
 const StyledCell = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  margin-left: 10px;
 `
 
 const StyledIconWrapper = styled.div`
   display:flex;
+  margin-left:10px;
 `
 
 const StyledIconTriZA = styled.div`
   width: 8px;
   height: 8px;
-  border: 4px solid transparent;
-  border-top: 0px solid transparent;
-  border-bottom: 8px solid #c6c6c6;
+  border: 4px solid ${colors.defaultBg};
+  border-top: 0px solid ${colors.defaultBg};
+  border-bottom: 8px solid ${colors.greyMedium};
   box-sizing: border-box;
   margin-left: -8px;
 `
@@ -240,9 +242,9 @@ const StyledIconTriZA = styled.div`
 const StyledIconTriAZ = styled.div`
   width: 8px;
   height: 8px;
-  border: 4px solid transparent;
-  border-bottom: 0px solid transparent;
-  border-top: 8px solid #c6c6c6;
+  border: 4px solid ${colors.defaultBg};
+  border-bottom: 0px solid ${colors.defaultBg};
+  border-top: 8px solid ${colors.greyMedium};
   box-sizing: border-box;
   margin-top: 10px;
 `

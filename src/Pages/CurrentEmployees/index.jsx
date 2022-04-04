@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { selectEmployees } from '../../Utils/selectors'
 
-import { NewTable } from '../../Components/NewTable'
+import { Table } from '../../Components/Table'
 
 function CurrentEmployees() {
   // Link to the store
@@ -11,12 +11,19 @@ function CurrentEmployees() {
   const employeesList = employees.data
 
   return (
-    <div id="employee-div" className="container">
-      <h1>Current Employees</h1>
+    <div>
+      <div className="title_container">
+        <h1>Current Employees</h1>
+      </div>
 
-      <NewTable dataSource={employeesList ?? {}} />
-      
-      <Link to="/">Home</Link>
+      <div id="employee-div" className="container">
+        <Table dataSource={employeesList ?? {}} />
+      </div>
+
+      <div className="subtitle_container">
+        <Link to="/">Home</Link>
+      </div>
+
     </div>
   )
 }
