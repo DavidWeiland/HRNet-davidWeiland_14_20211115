@@ -21,7 +21,7 @@ export default function Home() {
 useEffect(() => {
   getEmployees(store)
   // Only to reset the application :
-  localStorage.removeItem('employeess')
+  //localStorage.removeItem('employees')
 }, [store])
 
 
