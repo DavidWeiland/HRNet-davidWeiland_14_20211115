@@ -20,10 +20,10 @@ export default function Home() {
 
 useEffect(() => {
   getEmployees(store)
+  // Only to reset the application :
+  localStorage.removeItem('employeess')
 }, [store])
 
-  // Only to reset the application :
-  //localStorage.removeItem('employees')
 
   // Controls states of inputs
   const [firstName, setFirstname] = useState('')
