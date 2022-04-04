@@ -1,7 +1,7 @@
-import { useState, Suspense, lazy } from 'react'
+import { useEffect, useState, Suspense, lazy } from 'react'
 import { Link } from 'react-router-dom'
 import { useStore } from 'react-redux'
-import { addEmployee } from '../../Features/employees'
+import { getEmployees, addEmployee } from '../../Features/employees'
 import SelectMenu from '../../Components/SelectMenu'
 import InputComponent from '../../Components/InputComponent'
 
@@ -17,6 +17,10 @@ const Modal = lazy(() => import('dw-modal'))
 
 export default function Home() {
   const store = useStore()
+
+useEffect(() => {
+  getEmployees(store)
+}, [store])
 
   // Only to reset the application :
   //localStorage.removeItem('employees')
@@ -50,13 +54,7 @@ export default function Home() {
       department,
     }
 
-    console.log(employee.dateOfBirth)
     addEmployee(store, employee)
-
-    // This following part is only necessary in the case of a localStorage
-    /* const employees = JSON.parse(localStorage.getItem('employees')) || []
-    employees.push(employee)
-    localStorage.setItem('employees', JSON.stringify(employees)) */
 
     // Open the modal
     setModal(!modal)
