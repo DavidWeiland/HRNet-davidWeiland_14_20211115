@@ -56,7 +56,7 @@ export async function getEmployees(store) {
   }
   store.dispatch(actions.fetching())
   try {
-    const data = await JSON.parse(localStorage.getItem('employees'))
+    const data = await JSON.parse(localStorage.getItem('employeess')) || []
     store.dispatch(actions.resolved(data))
   }
   catch (error){
@@ -72,9 +72,9 @@ export async function addEmployee(store, employee) {
   }
   store.dispatch(actions.fetching())
   try {
-    const employees = await JSON.parse(localStorage.getItem('employees'))
+    const employees = await JSON.parse(localStorage.getItem('employeess')) || []
     employees.push(employee)
-    localStorage.setItem('employees', JSON.stringify(employees))
+    localStorage.setItem('employeess', JSON.stringify(employees))
     console.log(employees)
     store.dispatch(actions.resolved(employees))
   }
