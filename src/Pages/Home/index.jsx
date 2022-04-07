@@ -1,11 +1,10 @@
-import { useEffect, useState, Suspense, lazy } from 'react'
+import React, { useEffect, useState, Suspense, lazy } from 'react'
 import { Link } from 'react-router-dom'
 import { useStore } from 'react-redux'
 import { getEmployees, addEmployee } from '../../Features/employees'
+
 import SelectMenu from '../../Components/SelectMenu'
 import InputComponent from '../../Components/InputComponent'
-
-import { formatDate } from '../../Utils/FormatDateFunction'
 
 import '../../Utils/Styles/App.css'
 import styled from 'styled-components'
@@ -45,8 +44,8 @@ useEffect(() => {
     const employee = {
       firstName,
       lastName,
-      dateOfBirth: formatDate(dateOfBirth),
-      startDate: formatDate(startDate),
+      dateOfBirth,
+      startDate,
       street,
       city,
       state,
