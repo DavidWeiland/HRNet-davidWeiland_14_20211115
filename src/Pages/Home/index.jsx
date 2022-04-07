@@ -10,9 +10,8 @@ import '../../Utils/Styles/App.css'
 import styled from 'styled-components'
 import colors from '../../Utils/Styles/colors'
 
-
-// personal npm module:
-const Modal = lazy(() => import('dw-modal'))
+//import diféré
+const Modal = lazy(() => import('../../Components/Modal'))
 
 export default function Home() {
   const store = useStore()
