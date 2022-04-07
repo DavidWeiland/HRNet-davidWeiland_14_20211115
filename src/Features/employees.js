@@ -75,7 +75,6 @@ export async function addEmployee(store, employee) {
     const employees = await JSON.parse(localStorage.getItem('employees')) || []
     employees.push(employee)
     localStorage.setItem('employees', JSON.stringify(employees))
-    console.log(employees)
     store.dispatch(actions.resolved(employees))
   }
   catch (error) {
