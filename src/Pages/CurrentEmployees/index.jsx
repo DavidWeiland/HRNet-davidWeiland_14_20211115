@@ -18,7 +18,7 @@ function CurrentEmployees() {
 
       <div id="employee-div" className="container">
         <Table
-          data={employeesList}
+          data={employeesList ?? {}}
           model={[
             {
               title: 'First Name',
