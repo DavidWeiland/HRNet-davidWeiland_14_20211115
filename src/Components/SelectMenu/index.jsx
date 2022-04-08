@@ -7,6 +7,7 @@ export default function SelectMenu ({id, label, onChange}) {
 
   const options = id === 'state' ? states : department
   
+  //basic select needs SelectOptions component
   return (
     <Container>
       <Label htmlFor={id}>{label}</Label>

@@ -161,7 +161,7 @@ useEffect(() => {
       </div>
 
       <Suspense fallback={<div></div>}>
-        <Modal state={modal} config={{}} close={closeModal}>
+        <Modal state={modal} close={closeModal}>
           <p>Employee Created!</p>
         </Modal>
       </Suspense>

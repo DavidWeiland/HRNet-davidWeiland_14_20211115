@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import colors from '../../Utils/Styles/colors'
 
 export default function InputComponent({ type, id, label, value, onChange }) {
-
+// Basic input
   return (
     <Container>
       <Label htmlFor={id}>{label}</Label>

@@ -1,7 +1,6 @@
 import { selectEmployees } from '../Utils/selectors'
 import {createSlice} from '@reduxjs/toolkit'
 
-//data initialized with LocalStorage - waiting for backend
 const initialState = {
   status: 'void',
   data: null,
@@ -49,6 +48,7 @@ const { actions, reducer } = createSlice({
 })
 
 //to get employeesList
+//data initialized with LocalStorage - waiting for backend
 export async function getEmployees(store) {
   const status = selectEmployees(store.getState()).status
   if (status === 'pending' || status === 'updating') {

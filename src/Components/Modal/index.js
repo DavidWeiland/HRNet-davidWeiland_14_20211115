@@ -1,27 +1,13 @@
 import React from 'react'
 import './style.css'
 
-const Modal=({ state, config, close, children})=> {
-  
-  const { backgroundColor, borderRadius, width, height, justifyContent, alignItems, fontWeight, color, fontSize } = config
-  
-  const DWMWTstyle = {
-    backgroundColor: backgroundColor,
-    borderRadius: borderRadius,
-    width: width,
-    height: height,
-    justifyContent: justifyContent,
-    alignItems: alignItems,
-    fontWeight: fontWeight,
-    color: color,
-    fontSize: fontSize,
-  }
-
+const Modal=({ state, close, children})=> {
+// Dialog box display props children, open and close with props
   return (
-    <div className='DW-Modale-Wrapper' style={{display: state ? "flex" : "none"}}>
-      <div className='DW-Modale-Wrapper--Text' style={DWMWTstyle}>
+    <div className='DW-Modal-Wrapper' style={{display: state ? "flex" : "none"}}>
+      <div className='DW-Modal-Wrapper--Text'>
         {children}
-        <div className='DW-Modale-Wrapper--Close' onClick={close}>
+        <div className='DW-Modal-Wrapper--Close' onClick={close}>
         </div>
       </div>
     </div>
