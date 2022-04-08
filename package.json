@@ -1,14 +1,13 @@
 {
   "name": "hrnet",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@david_weiland/dw-table": "^1.0.0",
+    "@david_weiland/dw-table": "^1.1.1",
     "@reduxjs/toolkit": "^1.6.2",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^13.1.9",
-    "dw-modal": "^1.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
