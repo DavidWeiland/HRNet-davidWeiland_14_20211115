@@ -6,7 +6,7 @@ export default function InputComponent({ type, id, label, value, onChange }) {
   return (
     <Container>
       <Label htmlFor={id}>{label}</Label>
-      <Input type={type} id={id} value={value} onChange={onChange} />
+      <Input type={type} id={id} value={value} onChange={onChange} required/>
     </Container>
   )
 }
@@ -29,5 +29,4 @@ const Input = styled.input`
   font-size: 12px;
   font-weight: 400;
   width: 98%;
-  
 `

@@ -18,8 +18,6 @@ export default function Home() {
 
 useEffect(() => {
   getEmployees(store)
-  // Only to reset the application :
-  //localStorage.removeItem('employees')
 }, [store])
 
 
@@ -55,7 +53,7 @@ useEffect(() => {
     addEmployee(store, employee)
 
     // Open the modal
-    setModal(!modal)
+    manageModal()
 
     // Empties inputs
     setFirstname('')
@@ -69,13 +67,13 @@ useEffect(() => {
     setDepartment('Sales')
   }
 
-  // Imposed by dw-modal to close modal
-  const closeModal = () => {
+  // toogle to manage the state of modal
+  const manageModal = () => {
     setModal(!modal)
   }
 
   return (
-    <div>
+    <div>’
       <div className="title_container">
         <h1>HRnet</h1>
       </div>
@@ -161,7 +159,7 @@ useEffect(() => {
       </div>
 
       <Suspense fallback={<div></div>}>
-        <Modal state={modal} close={closeModal}>
+        <Modal state={modal} close={manageModal}>
           <p>Employee Created!</p>
         </Modal>
       </Suspense>
