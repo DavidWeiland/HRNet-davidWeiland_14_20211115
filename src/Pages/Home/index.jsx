@@ -73,7 +73,7 @@ useEffect(() => {
   }
 
   return (
-    <div>’
+    <div>
       <div className="title_container">
         <h1>HRnet</h1>
       </div>
