@@ -1,22 +1,14 @@
 import '../../Utils/Styles/App.css'
-import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { useStore } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { selectEmployees } from '../../Utils/selectors'
-import { getEmployees } from '../../Features/employees'
 //import personal component 
 import { Table } from '@david_weiland/dw-table'
 
 function CurrentEmployees() {
   // Link to the store
-  const store = useStore()
   const employees = useSelector(selectEmployees)
   const employeesList = employees.data ?? []
-  
-  useEffect(() => {
-    getEmployees(store)
-  }, [ store ])
   
   return (
     <div>
